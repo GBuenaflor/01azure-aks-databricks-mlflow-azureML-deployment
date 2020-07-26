@@ -1,0 +1,208 @@
+#-----------------------------------------------------------------
+# Deploy ASP.net MVC Core and SQL Linux to AKS  
+#  
+#-----------------------------------------------------------------
+#-----------------------------------------------------------------
+# Kubernetes - ConfigMap
+#-----------------------------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mssql-connection-configmap
+  labels:
+    app: aks01-web
+data:
+  db-connection-string: Server=mssql-service-int;Database=Web01DB;User=SA;Password=<YourPasswordHere>;
+#-----------------------------------------------------------------
+# Kubernetes - StorageClass
+#-----------------------------------------------------------------
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass 
+metadata:
+  name: azure-disk
+provisioner: kubernetes.io/azure-disk
+parameters:
+  storageaccounttype: Standard_LRS
+  kind: Managed
+#-----------------------------------------------------------------
+# Kubernetes - PersistentVolumeClaim
+#-----------------------------------------------------------------
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-pv-claim
+  annotations: 
+    volume.beta.kubernetes.io/storage-class: azure-disk
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+#-----------------------------------------------------------------
+# Kubernetes - Service for SQL Linux - Internal
+#-----------------------------------------------------------------
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mssql-service-int
+  namespace: default
+spec:
+  selector:
+    app: mssql
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+      nodePort: 30200
+  type: NodePort
+#-----------------------------------------------------------------
+# Kubernetes - Service for SQL Linux - External
+#-----------------------------------------------------------------
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mssql-service-ext
+  namespace: default
+spec:
+  selector:
+    app: mssql
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433 
+  type: LoadBalancer
+#-----------------------------------------------------------------
+# Kubernetes - Deployment for SQL Linux
+#-----------------------------------------------------------------
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: mssql-deployment
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mssql
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mssql
+        image: microsoft/mssql-server-linux
+        resources:
+           limits:
+             cpu: "2"
+             memory: "2Gi"
+           requests:
+             cpu: "0.5"
+        ports:
+        - containerPort: 1433
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          value: "<YourPasswordHere>"
+        volumeMounts:
+        - name: mssql-persistent-storage
+          mountPath: /var/opt/mssql
+      volumes:
+      - name: mssql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mssql-pv-claim
+#-----------------------------------------------------------------
+# Kubernetes - Deployment for Web App
+#-----------------------------------------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks01-web
+  namespace: default
+  labels:
+    app: aks01-web
+spec:
+  selector:
+    matchLabels:
+      app: aks01-web
+  replicas: 2 # run in 2 Pod
+  minReadySeconds: 45
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: aks01-web        
+    spec:
+      containers:
+      - name: aks01-web
+        image: gbbuenaflor/web01aks:308 # Replace Image Tag #{Build.BuildId}#
+        imagePullPolicy: IfNotPresent         
+        ports:
+        - name: container-port
+          containerPort: 80
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "1024Mi"
+          requests:
+            cpu: "100m"
+            memory: "512Mi"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: container-port
+          failureThreshold: 5
+          periodSeconds: 10
+          initialDelaySeconds: 60
+        livenessProbe:
+          httpGet:
+            path: /
+            port: container-port
+          failureThreshold: 5
+          periodSeconds: 10
+          initialDelaySeconds: 60
+        env:
+          - name: ConnectionStrings__WebDataContext
+            valueFrom:
+##              secretKeyRef:
+##                name: mssql-secret
+##                key: db-connection-string-secret
+              configMapKeyRef:
+                name: mssql-connection-configmap
+                key: db-connection-string
+
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+#-----------------------------------------------------------------
+# Kubernetes - Service for Web App
+#-----------------------------------------------------------------
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels: #PODS
+    app: aks01-web
+  name: aks01-web
+  namespace: default
+  
+spec:
+  selector:
+    app: aks01-web
+  sessionAffinity: None 
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    #nodePort: 30020 
+  type: LoadBalancer #nodePort # ClusterIP  #type: LoadBalancer
