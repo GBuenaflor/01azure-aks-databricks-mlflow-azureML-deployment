@@ -35,8 +35,11 @@ terraform apply
 
 
 Note : AKS and Azure Databricks will be created, other services will be created by the Notebook
- 
- 
+       I open Ticket: Quota request for Compute-VM (cores-vCPUs) subscription limit increases
+       Request Summary / New Limit:
+       Resource Manager, EASTUS, DSv2 Series / 50
+       Resource Manager, EASTUS, DSv3 Series / 50
+  
 ------------------------------------------------------------------------------
 #  1.  View Machine learning Library that can be use, in this post, select diabetes dataset from Scikit-learn.
          
