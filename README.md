@@ -34,10 +34,14 @@ terraform plan
 terraform apply
 
 
-Note : AKS and Azure Databricks will be created, other services will be created by the Notebook
-       I open Ticket: Quota request for Compute-VM (cores-vCPUs) subscription limit increases
+Note : AKS and Azure Databricks will be created, other services will be created by the Notebook.
+
+       Because Azure DataBricks eats lots of vCPU, I open a ticket to increase Quota for Compute-VM (cores-vCPUs) subscription limit increases
+
        Request Summary / New Limit:
+
        Resource Manager, EASTUS, DSv2 Series / 50
+
        Resource Manager, EASTUS, DSv3 Series / 50
   
 ------------------------------------------------------------------------------
