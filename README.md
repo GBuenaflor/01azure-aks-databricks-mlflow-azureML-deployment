@@ -1,6 +1,6 @@
 ----------------------------------------------------------
 # Azure Kubernetes Services (AKS) - Part 05
-# Azure Databricks, MLFlow and Azure Machine Learning deployment
+# Deploy and Serve Model using Azure Databricks, MLFlow and Azure ML deployment to ACI or AKS
  
  
 High Level Architecture Diagram:
