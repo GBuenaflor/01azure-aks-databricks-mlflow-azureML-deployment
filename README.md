@@ -3,13 +3,13 @@
 # Azure Databricks, MLFlow and Azure Machine Learning deployment
  
  
-# High Level Architecture Diagram:
+High Level Architecture Diagram:
 
 
 ![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks01.png)
 
 
-# Configuration Flow :
+Configuration Flow :
 
 ------------------------------------------------------------------------------
 Prerequisite : Provision Azure Environment using Azure Terraform
