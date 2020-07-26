@@ -36,7 +36,7 @@ Note : AKS and Azure Databricks will be created, other services will be created 
  
  
 ------------------------------------------------------------------------------
-#  1.  View Machine learning Library that can be use, in this post, select diabetes dataset from SKLearn.
+#  1.  View Machine learning Library that can be use, in this post, select diabetes dataset from Scikit-learn.
 
 
 https://scikit-learn.org/stable/auto_examples/index.html
@@ -52,7 +52,7 @@ Make a query in the dataset. We will train a model using this data.
 
 
 ------------------------------------------------------------------------------
-#  2.  Create a Azure DataBricks Cluster, install required library and upload a notebook (01Azure-Machine Learning Deployment - ACI or AKS Environment.ipynb)
+#  2.  Create a Azure DataBricks Cluster, install required libraries and upload the notebook
 
 
 Using the Auzre Portal, create a new Azure Databricks Cluster
@@ -69,16 +69,19 @@ Then install the required libraries.
 
 
 Note : 
-    In Staging / Development (using ACI)
+
+
+    In Staging / Development (use ACI)
 	
 	
 	cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST
 
 	
-    In Production (using AKS)
+    In Production (use AKS)
   
     
 	At least 3 machine(s) are required for cluster with purpose 'FastProd'
+	In this post I only use 2 cluster to save money.
 
 
 ------------------------------------------------------------------------------
@@ -91,7 +94,7 @@ Note :
 
 
 ------------------------------------------------------------------------------
-#  4.  Attach Azure Machine Learning to exisiting AKS Cluster and deploy the model image
+#  4.  Attach Azure Machine Learning to existing AKS Cluster and deploy the model image
 
   
 
@@ -116,6 +119,11 @@ Using Appplication Gateway go to this link:
 
 
 https://github.com/GBuenaflor/01azure-aks-ingresscontroller-agic
+
+
+
+
+
 
 
 
