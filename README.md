@@ -110,12 +110,12 @@ Note :
 
 
     In Staging / Development  use ACI
-	
-	
-	
+		
+		
     In Production use AKS
 	
-	Option 1: Create ne AKS Cluster  
+	
+	Option 1: Create new AKS Cluster  
 	
     Option 2: existing AKS Cluster 
 	
@@ -126,29 +126,21 @@ Note :
 #  To implement Ingress controller:
    
    
-Using NGINX-Ingress COntroller go to this link:
-
-
+NGINX-Ingress Controller:
 https://github.com/GBuenaflor/01azure-aks-ingresscontroller-https
 
 
 
 
-Using Appplication Gateway Ingress Controller go to this link:
-
-
+Appplication Gateway Ingress Controller:
 https://github.com/GBuenaflor/01azure-aks-ingresscontroller-agic
 
 
 
 
-
-
-
-
-
-
-
+<br>
+<br>
+<br>
 
 Note: My Favorite > Microsoft Technologies.
 
