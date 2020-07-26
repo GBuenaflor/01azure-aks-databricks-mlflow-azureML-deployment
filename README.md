@@ -109,7 +109,7 @@ Note :
 #  To implement Ingress controller:
    
    
-Using NGINX  go to this link:
+Using NGINX-Ingress COntroller go to this link:
 
 
 https://github.com/GBuenaflor/01azure-aks-ingresscontroller-https
@@ -117,7 +117,7 @@ https://github.com/GBuenaflor/01azure-aks-ingresscontroller-https
 
 
 
-Using Appplication Gateway go to this link:
+Using Appplication Gateway Ingress Controller go to this link:
 
 
 https://github.com/GBuenaflor/01azure-aks-ingresscontroller-agic
