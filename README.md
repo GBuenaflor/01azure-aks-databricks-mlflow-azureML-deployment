@@ -71,19 +71,15 @@ Then install the required libraries.
 
 
 Note : 
-
+ 
 
     In Staging / Development  
-	
-	
-	cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST
+	use cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST
 
 	
     In Production  
-  
-    
 	At least 3 machine(s) are required for cluster with purpose 'FastProd'
-	In this post I only use 2 cluster to save money.
+	 
 
 
 ------------------------------------------------------------------------------
