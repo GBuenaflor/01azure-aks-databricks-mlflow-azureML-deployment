@@ -18,7 +18,7 @@ Prerequisite : Provision Azure Environment using Azure Terraform
 
 3.  Run the notebook, to create an Azure ML Workspace and build container image for model deployment
 
-4.  Deploy model image to aci (staging/dev) or to aks (production)
+4.  Attach Azure Machine Learning to exisiting AKS Cluster and deploy the model image
 
 
 ------------------------------------------------------------------------------
@@ -34,3 +34,94 @@ terraform apply
 
 Note : AKS and Azure Databricks will be created, other services will be created by the Notebook
  
+ 
+------------------------------------------------------------------------------
+#  1.  View Machine learning Library that can be use, in this post, select diabetes dataset from SKLearn.
+
+
+https://scikit-learn.org/stable/auto_examples/index.html
+
+https://scikit-learn.org/stable/auto_examples/exercises/plot_cv_diabetes.html#sphx-glr-auto-examples-exercises-plot-cv-diabetes-py
+
+
+Make a query in the dataset. We will train a model using this data.
+
+
+![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks02.png)
+
+
+
+------------------------------------------------------------------------------
+#  2.  Create a Azure DataBricks Cluster, install required library and upload a notebook (01Azure-Machine Learning Deployment - ACI or AKS Environment.ipynb)
+
+
+Using the Auzre Portal, create a new Azure Databricks Cluster
+
+
+![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks03.png)
+
+
+Then install the required libraries.
+
+
+![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks04.png)
+
+
+
+Note : 
+    In Staging / Development (using ACI)
+	
+	
+	cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST
+
+	
+    In Production (using AKS)
+  
+    
+	At least 3 machine(s) are required for cluster with purpose 'FastProd'
+
+
+------------------------------------------------------------------------------
+#  3.  Run the notebook, to create an Azure ML Workspace, train the model, and build container image for model deployment
+
+
+
+![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks05.png)
+ 
+
+
+------------------------------------------------------------------------------
+#  4.  Attach Azure Machine Learning to exisiting AKS Cluster and deploy the model image
+
+  
+
+![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks06.png)
+ 
+
+
+------------------------------------------------------------------------------
+
+#  To implement Ingress controller:
+   
+   
+Using NGINX  go to this link:
+
+
+https://github.com/GBuenaflor/01azure-aks-ingresscontroller-https
+
+
+
+
+Using Appplication Gateway go to this link:
+
+
+https://github.com/GBuenaflor/01azure-aks-ingresscontroller-agic
+
+
+
+
+
+
+
+Note: My Favorite > Microsoft Technologies.
+
