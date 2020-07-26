@@ -34,16 +34,12 @@ terraform plan
 terraform apply
 
 
-Note : AKS and Azure Databricks will be created, other services will be created by the Notebook.
+Note : 
 
-       Because Azure DataBricks eats lots of vCPU, I open a ticket to increase Quota for Compute-VM (cores-vCPUs) subscription limit increases
+AKS and Azure Databricks will be created, other services will be created by the Notebook.
 
-       Request Summary / New Limit:
-
-       Resource Manager, EASTUS, DSv2 Series / 50
-
-       Resource Manager, EASTUS, DSv3 Series / 50
-  
+Ensure you have head room Quota for Compute-VM (cores-vCPUs) subscription limit.
+       
 ------------------------------------------------------------------------------
 #  1.  View Machine learning Library that can be use, in this post, select diabetes dataset from Scikit-learn.
          
