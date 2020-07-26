@@ -73,13 +73,13 @@ Then install the required libraries.
 Note : 
 
 
-    In Staging / Development (use ACI)
+    In Staging / Development  
 	
 	
 	cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST
 
 	
-    In Production (use AKS)
+    In Production  
   
     
 	At least 3 machine(s) are required for cluster with purpose 'FastProd'
@@ -102,7 +102,24 @@ Note :
 
 ![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks06.png)
  
+ 
+ 
+ 
+ 
+Note : 
 
+
+    In Staging / Development  use ACI
+	
+	
+	
+    In Production use AKS
+	
+	Option 1: Create ne AKS Cluster  
+	
+    Option 2: existing AKS Cluster 
+	
+     
 
 ------------------------------------------------------------------------------
 
