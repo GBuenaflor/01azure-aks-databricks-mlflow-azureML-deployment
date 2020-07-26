@@ -98,28 +98,32 @@ Note :
 ------------------------------------------------------------------------------
 #  4.  Attach Azure Machine Learning to existing AKS Cluster and deploy the model image
 
+
+    -In Staging / Development  use ACI
+		
+    -In Production use AKS
+	
+	Option 1: Create new AKS Cluster  
+    Option 2: Use existing AKS Cluster 
+
+     
   
 
 ![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks06.png)
  
  
  
- 
- 
-Note : 
 
+------------------------------------------------------------------------------
+#  Test the Webservice
 
-    In Staging / Development  use ACI
-		
-		
-    In Production use AKS
-	
-	
-	Option 1: Create new AKS Cluster  
-	
-    Option 2: existing AKS Cluster 
-	
-     
+  
+Supply data and view the prediction
+  
+
+![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks07.png)
+ 
+  
 
 ------------------------------------------------------------------------------
 
