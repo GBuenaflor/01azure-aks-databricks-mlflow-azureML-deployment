@@ -39,8 +39,8 @@ Note : AKS and Azure Databricks will be created, other services will be created 
  
 ------------------------------------------------------------------------------
 #  1.  View Machine learning Library that can be use, in this post, select diabetes dataset from Scikit-learn.
-
-
+         
+		
 https://scikit-learn.org/stable/auto_examples/index.html
 
 https://scikit-learn.org/stable/auto_examples/exercises/plot_cv_diabetes.html#sphx-glr-auto-examples-exercises-plot-cv-diabetes-py
@@ -54,7 +54,7 @@ Make a query in the dataset. We will train a model using this data.
 
 
 ------------------------------------------------------------------------------
-#  2.  Create a Azure DataBricks Cluster, install required libraries and upload the notebook
+#  2.  Create an Azure DataBricks Cluster, install required libraries and upload the notebook
 
 
 Using the Auzre Portal, create a new Azure Databricks Cluster
@@ -78,7 +78,7 @@ Note :
 
 	
     In Production  
-	At least 3 machine(s) are required for cluster with purpose 'FastProd'
+	At least 3 machine(s) are required for the cluster with purpose 'FastProd'
 	 
 
 
@@ -99,7 +99,7 @@ Note :
 		
     -In Production use AKS
 	
-	Option 1: Create new AKS Cluster  
+	Option 1: Create a new AKS Cluster  
     Option 2: Use existing AKS Cluster 
 
      
