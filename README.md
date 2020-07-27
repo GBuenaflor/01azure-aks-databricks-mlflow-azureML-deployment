@@ -126,24 +126,12 @@ Supply data and view the prediction
 
 ------------------------------------------------------------------------------
 
-#  To implement Ingress controller:
-   
-   
-NGINX-Ingress Controller:
-https://github.com/GBuenaflor/01azure-aks-ingresscontroller-https
 
+</br>
+Link to other Microsoft Azure projects
+https://github.com/GBuenaflor/01azure
+</br>
 
-
-
-Appplication Gateway Ingress Controller:
-https://github.com/GBuenaflor/01azure-aks-ingresscontroller-agic
-
-
-
-
-<br>
-<br>
-<br>
 
 Note: My Favorite > Microsoft Technologies.
 
