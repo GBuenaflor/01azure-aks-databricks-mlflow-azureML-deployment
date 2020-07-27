@@ -38,7 +38,7 @@ Note :
 
 AKS and Azure Databricks will be created, other services will be created by the Notebook.
 
-Ensure you have head room Quota for Compute-VM (cores-vCPUs) subscription limit.
+Ensure head room Quota for Compute-VM (cores-vCPUs) subscription limit.
        
 ------------------------------------------------------------------------------
 #  1.  View Machine learning Library that can be use, in this post, select diabetes dataset from Scikit-learn.
