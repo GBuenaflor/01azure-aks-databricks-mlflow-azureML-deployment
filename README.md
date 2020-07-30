@@ -103,8 +103,58 @@ Note :
 	Option 1: Create a new AKS Cluster  
     Option 2: Use existing AKS Cluster 
 
-     
+
+# Connect to an existing AKS cluster in your workspace
+  ``` 
+from azureml.core.compute import AksCompute, ComputeTarget
+ 
+# Give the cluster a local name
+aks_cluster_name = "az-k8s"
+
+# Attach the cluster to your workgroup
+attach_config = AksCompute.attach_configuration(resource_group = "Env-DataBricks-RG",
+                                                cluster_name = aks_cluster_name,
+                                                cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)  
+#  cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST
+#  At least 3 machine(s) are required for cluster with purpose 'FastProd'
+
+aks_target = ComputeTarget.attach(workspace=workspace, 
+                                  name=aks_cluster_name, 
+                                  attach_configuration=attach_config)
+
+aks_target.wait_for_completion(True)
+
+print(aks_target.provisioning_state)
+print(aks_target.provisioning_errors)
   
+  ``` 
+  
+  
+  # Deploy to the model's image to AKS cluster
+   ```    
+from azureml.core.webservice import Webservice, AksWebservice
+from azureml.core import Image
+
+# Set configuration and service name
+prod_webservice_name = "diabetes-model-prod"
+prod_webservice_deployment_config = AksWebservice.deploy_configuration()
+image_name ="model" 
+  
+  
+image = Image(name=image_name, workspace=workspace)
+
+
+# Deploy from image
+prod_webservice = Webservice.deploy_from_image(workspace = workspace, 
+                                               name = prod_webservice_name,
+                                               image = image, #model_image,
+                                               deployment_config = prod_webservice_deployment_config,
+                                               deployment_target = aks_target)
+
+   
+    ``` 
+    
+        
 
 ![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks06.png)
  
