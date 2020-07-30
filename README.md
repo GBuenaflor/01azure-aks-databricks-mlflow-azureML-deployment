@@ -96,15 +96,13 @@ Note :
 #  4.  Attach Azure Machine Learning to existing AKS Cluster and deploy the model image
 
 
-    -In Staging / Development  use ACI
-		
-    -In Production use AKS
-	
-	Option 1: Create a new AKS Cluster  
-    Option 2: Use existing AKS Cluster 
+    -In Staging / Development  use ACI		
+    -In Production use AKS	
+       Option 1: Create a new AKS Cluster  
+       Option 2: Connect to an existing AKS cluster   
 
 
-# Connect to an existing AKS cluster in your workspace
+# Connect to an existing AKS cluster  
   ``` 
 from azureml.core.compute import AksCompute, ComputeTarget
  
@@ -131,6 +129,7 @@ print(aks_target.provisioning_errors)
   
   
   # Deploy to the model's image to AKS cluster
+  
    ```    
 from azureml.core.webservice import Webservice, AksWebservice
 from azureml.core import Image
@@ -152,8 +151,8 @@ prod_webservice = Webservice.deploy_from_image(workspace = workspace,
                                                deployment_target = aks_target)
 
    
-    ``` 
-    
+ ``` 
+  
         
 
 ![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks06.png)
