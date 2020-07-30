@@ -47,7 +47,7 @@ https://scikit-learn.org/stable/auto_examples/index.html
 https://scikit-learn.org/stable/auto_examples/exercises/plot_cv_diabetes.html#sphx-glr-auto-examples-exercises-plot-cv-diabetes-py
 
 
-Make a query in the dataset. We will train a model using this data.
+## Make a query in the dataset. We will train a model using this data.
 
   ``` 
   from sklearn.datasets import load_diabetes
@@ -114,7 +114,7 @@ Note :
        Option 2: Connect to an existing AKS cluster   
 
 
-# Connect to an existing AKS cluster  
+## Connect to an existing AKS cluster  
   ``` 
 from azureml.core.compute import AksCompute, ComputeTarget
  
@@ -140,7 +140,7 @@ print(aks_target.provisioning_errors)
   ``` 
   
   
-  # Deploy to the model's image to AKS cluster
+  ## Deploy to the model's image to AKS cluster
   
    ```    
 from azureml.core.webservice import Webservice, AksWebservice
