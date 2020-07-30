@@ -26,13 +26,11 @@ Prerequisite : Provision Azure Environment using Azure Terraform
 ------------------------------------------------------------------------------
 # Prerequisite : Provision Azure Environment using Azure Terraform
 
- 
+``` 
 terraform init
-
 terraform plan
-
 terraform apply
-
+```
 
 Note : 
 
