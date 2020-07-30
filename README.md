@@ -49,7 +49,19 @@ https://scikit-learn.org/stable/auto_examples/exercises/plot_cv_diabetes.html#sp
 
 Make a query in the dataset. We will train a model using this data.
 
+  ``` 
+  from sklearn.datasets import load_diabetes
 
+  diabetes = load_diabetes() 
+  
+  print('diabetes.keys: ', diabetes.keys())
+  print('diabetes.data: ', diabetes.data)
+  print('diabetes.target: ', diabetes.target)
+
+  ``` 
+    
+    
+    
 ![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks02.png)
 
 
