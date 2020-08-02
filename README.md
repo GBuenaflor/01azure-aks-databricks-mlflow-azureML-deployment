@@ -3,13 +3,13 @@
 # Deploy and Serve Model using Azure Databricks, MLFlow and Azure ML deployment to ACI or AKS
  
  
-High Level Architecture Diagram:
+#### High Level Architecture Diagram:
 
 
 ![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks01.png)
 
 
-Configuration Flow :
+#### Configuration Flow :
 
 ------------------------------------------------------------------------------
 Prerequisite : Provision Azure Environment using Azure Terraform
@@ -24,7 +24,7 @@ Prerequisite : Provision Azure Environment using Azure Terraform
 
 
 ------------------------------------------------------------------------------
-# Prerequisite : Provision Azure Environment using Azure Terraform
+#### Prerequisite : Provision Azure Environment using Azure Terraform
 
 ``` 
 terraform init
@@ -39,7 +39,7 @@ AKS and Azure Databricks will be created, other services will be created by the 
 Ensure head room Quota for Compute-VM (cores-vCPUs) subscription limit.
        
 ------------------------------------------------------------------------------
-#  1.  View Machine learning Library that can be use, in this post, select diabetes dataset from Scikit-learn.
+##  1.  View Machine learning Library that can be use, in this post, select diabetes dataset from Scikit-learn.
          
 		
 https://scikit-learn.org/stable/auto_examples/index.html
@@ -47,7 +47,7 @@ https://scikit-learn.org/stable/auto_examples/index.html
 https://scikit-learn.org/stable/auto_examples/exercises/plot_cv_diabetes.html#sphx-glr-auto-examples-exercises-plot-cv-diabetes-py
 
 
-## Make a query in the dataset. We will train a model using this data.
+### Make a query in the dataset. We will train a model using this data.
 
   ``` 
   from sklearn.datasets import load_diabetes
@@ -67,7 +67,7 @@ https://scikit-learn.org/stable/auto_examples/exercises/plot_cv_diabetes.html#sp
 
 
 ------------------------------------------------------------------------------
-#  2.  Create an Azure DataBricks Cluster, install required libraries and upload the notebook
+##  2.  Create an Azure DataBricks Cluster, install required libraries and upload the notebook
 
 
 Using the Auzre Portal, create a new Azure Databricks Cluster
@@ -96,7 +96,7 @@ Note :
 
 
 ------------------------------------------------------------------------------
-#  3.  Run the notebook, to create an Azure ML Workspace, train the model, and build container image for model deployment
+##  3.  Run the notebook, to create an Azure ML Workspace, train the model, and build container image for model deployment
 
 
 
@@ -105,7 +105,7 @@ Note :
 
 
 ------------------------------------------------------------------------------
-#  4.  Attach Azure Machine Learning to existing AKS Cluster and deploy the model image
+##  4.  Attach Azure Machine Learning to existing AKS Cluster and deploy the model image
 
 
     -In Staging / Development  use ACI		
@@ -114,7 +114,7 @@ Note :
        Option 2: Connect to an existing AKS cluster   
 
 
-## Connect to an existing AKS cluster  
+### Connect to an existing AKS cluster  
   ``` 
 from azureml.core.compute import AksCompute, ComputeTarget
  
@@ -140,7 +140,7 @@ print(aks_target.provisioning_errors)
   ``` 
   
   
-  ## Deploy to the model's image to AKS cluster
+  ### Deploy to the model's image to AKS cluster
   
    ```    
 from azureml.core.webservice import Webservice, AksWebservice
@@ -173,7 +173,7 @@ prod_webservice = Webservice.deploy_from_image(workspace = workspace,
  
 
 ------------------------------------------------------------------------------
-#  Test the Webservice
+###  Test the Webservice
 
   
 Supply data and view the prediction
