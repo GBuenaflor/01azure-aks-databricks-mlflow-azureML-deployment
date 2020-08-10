@@ -1,5 +1,5 @@
 ----------------------------------------------------------
-# Azure Kubernetes Services (AKS) - Part 05
+# Azure Kubernetes Services (AKS) - Part 06
 # Deploy and Serve Model using Azure Databricks, MLFlow and Azure ML deployment to ACI or AKS
  
  
