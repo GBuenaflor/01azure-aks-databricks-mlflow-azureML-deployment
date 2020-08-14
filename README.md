@@ -6,7 +6,7 @@
 #### High Level Architecture Diagram:
 
 
-![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks01.png)
+![Image description](https://github.com/GBuenaflor/01azure-aks-databricks-mlflow-azureML-deployment/blob/master/Images/GB-AKS-DataBricks01A.png)
 
 
 #### Configuration Flow :
